@@ -70,7 +70,12 @@ app.get("/mp3", async (req, res) => {
     }
 });
 
-app.listen(process.env.PORT || 3500, () => {
+const port = process.env.PORT;
+if (!port) {
+    throw new Error("PORT environment variable is not set.");
+}
+
+app.listen(port, () => {
     console.log("Server is running");
 });
 
@@ -100,6 +105,6 @@ app.get("/mp4", async (req, res) => {
     }
 });
 
-app.listen(process.env.PORT || 3500, () => {
+app.listen(port, () => {
     console.log("Server on");
 });
