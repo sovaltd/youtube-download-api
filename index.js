@@ -83,13 +83,20 @@ app.get("/mp4", async (req, res) => {
             requestOptions: {
                 headers: {
                     Cookie: cookies,
+                    "User-Agent":
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
                 },
             },
+        }).on("error", (err) => {
+            console.error("ytdl error:", err);
+            res.status(500).send("Streaming failed: " + err.message);
         }).pipe(res);
     } catch (error) {
+        console.error("Route error:", error);
         res.status(500).send("Error streaming video");
     }
 });
+
 
 // Proper port handling for Render
 const port = process.env.PORT;
