@@ -19,6 +19,7 @@
     "homepage": "https://github.com/MatheusIshiyama/youtube-download-api#readme",
     "dependencies": {
         "@distube/ytdl-core": "^4.16.9",
+        "cookiefile": "^1.0.10",
         "cors": "^2.8.5",
         "express": "^4.17.1"
     }
